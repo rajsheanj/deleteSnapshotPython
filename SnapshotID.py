@@ -7,9 +7,7 @@ response = client.describe_images(
         {
         },
     ],
-    Owners=[
-        'amazon'
-    ]
+
 )
 # Sort on Creation date Desc
 image_details = sorted(response['Images'],key=itemgetter('CreationDate'),reverse=True)
