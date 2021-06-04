@@ -3,9 +3,7 @@ from operator import itemgetter
 
 client = boto3.client('ec2')
 response = client.describe_images(
-    Filters=[
-        {
-        },
+    Filters=[ {     },
     ],
 
 )
