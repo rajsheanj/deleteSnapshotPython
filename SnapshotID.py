@@ -5,12 +5,6 @@ client = boto3.client('ec2')
 response = client.describe_images(
     Filters=[
         {
-            'Name': 'Instance ID',
-            'Instance ID':
-            'Image ID':
-            'Values': [
-                'Amazon Linux AMI*',
-            ]
         },
     ],
     Owners=[
