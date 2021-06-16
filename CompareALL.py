@@ -25,7 +25,7 @@ for inst_detail in ec2_res.instances.all():
     list_if_amis.append(inst_detail.image_id)
 print("instance name", list_of_instance)
 print("ami ID", list_if_amis)
-json_string = json.dumps(list_of_instance_amis)
+#json_string = json.dumps(list_of_instance_amis)
 
 for ami in amis['Images']:
     create_date = ami['CreationDate']
@@ -41,8 +41,22 @@ for ami in amis['Images']:
         # deregister the AMI
         #ec2.deregister_image(ImageId=ami_id)
 
-    #for x in list_ami_id:
-     #   for json_res in json_string:
-      #      if(json_res == x):
-       #         print("Image id is matchin", x,  json_res.ImageID)
-        #        print("Instance and AMI ID", json_string.instanceName, json_string.ImageID)
+#temp1 = set(list_of_instance_amis)
+#temp2 = set(list_ami_id)
+#list_of_final_amis = temp1.union(temp2)-temp1.intersection(temp2)
+instancesName = []
+for i in ec2_res.instances.all():
+    for tag in i.tags:
+        if tag['Key'] == 'Name':
+            instancesName.append({'instanceName': tag['Value'], 'ami_id': i.image_id, "launch_time": i.launch_time})
+            print("tag name", tag['Value'])
+print("instancesDetail##",instancesName)
+
+result = []
+#for inst_detail in ec2_res.instances.all():
+#    for i in list_ami_id:
+#        if (i in inst_detail.image_id):
+#            for tag in inst_detail.tags:
+#                print(tag['Value'])
+#                result.append({'instanceName': tag['Value'],'instanceID': inst_detail.instance_id, 'ami_id': inst_detail.image_id})
+#                print("resukta", result)
