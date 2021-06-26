@@ -5,8 +5,8 @@ def describe_ec2_instances():
         print("Desc EC2 instances")
         resource_ec2 = boto3.client("ec2")
         print(resource_ec2.describe_instances())
-        #resource_ec2.run_instances(ImageId='ami-04d29b6f966df1537')
-        #print(resource_ec2.describe_instances()["Reservations"][0]["Instances"][0]["InstanceId"])
+        resource_ec2.run_instances(ImageId='ami-0db896e3f36a082ed')
+        print(resource_ec2.describe_instances()["Reservations"][0]["Instances"][0]["InstanceId"])
 
     except Exception as e:
         print(e)
